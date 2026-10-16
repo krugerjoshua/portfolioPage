@@ -1,184 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>DevJosh Portfolio Website</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
-        
-        <!-- Update these with your own fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
-        
-        <link rel="stylesheet" href="css/index.css">
-
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- in index.html <head>, alongside your Inter import -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Knewave&display=swap"
+            rel="stylesheet"
+        />
+        <title>Joshua Portfolio</title>
     </head>
-    <body>
-        <header>
-            <div class="logo">
-                <p>&lt;DevJosh&gt;</p>
-            </div>
-            <button class="nav-toggle" aria-label="toggle navigation">
-                <span class="hamburger"></span>
-            </button>
-            <nav class="nav">
-                <ul class="nav_list">
-                    <li class="nav_item"><a href="#home" class="nav_link">Home</a></li>
-                    <li class="nav_item"><a href="#services" class="nav_link">My Services</a></li>
-                    <li class="nav_item"><a href="#about" class="nav_link">About me</a></li>
-                    <li class="nav_item"><a href="#work" class="nav_link">My Work</a></li>
-                </ul>
-            </nav>
-        </header>
-        
-        <!-- Introduction -->
-        <section class="intro" id="home">
-            <h1 class="section_title section_title-intro">
-                Hi, I am <strong>Joshua Kruger</strong>
-            </h1>
-            <p class="section_subtitle section_subtitle-intro">front-end dev</p>
-            <img src="img/dev-jane-01.jpg" alt="a picture of Jane Smith smiling" class="intro_img">
-        </section>
-        
-        
-        <!-- My services -->
-        <section class="my-services" id="services">
-            <h2 class="section_title section_title-services">What I do</h2>
-            <div class="services">
-                <div class="service">
-                    <h3>Web Development</h3>
-                    <p>I can build simple web applications with HTML, CSS, and JavaScript, and I’m looking to grow my skills by diving into advanced frameworks, responsive design, and backend technologies to create more dynamic and scalable projects.</p>
-                </div> <!-- / service -->
-                
-                <div class="service">
-                    <h3>Software Development</h3>
-                    <p>I’ve started building web apps with Vite and React, which make the development process smoother and help me create faster, more interactive user interfaces. These tools have been great for working with components, managing state, and building apps that are both modern and scalable.</p>
-                </div> <!-- / service -->
-            </div> <!-- / services -->
-            
-            <a href="#work" class="btn">My Work</a>
-        </section>
-        
-        
-        <!-- About me -->
-        <section class="about-me" id="about">
-           <h2 class="section_title section_title-about">Who I am</h2>
-           <p class="section_subtitle section_subtitle-about">Designer & developer based in Cape Town</p>
-           
-           <div class="about-me_body">
-               <p>Good day fellow Software Developers! I recently started with a part-time software developer course which I am currently busy with. I'm currently busy with HTML, CSS and JavaScript. I've done a few projects so far that is showcased below, that will take you to my Github repo. I'm eager to learn more of the industry and to start working with other people in the same field as me.</p>
-           </div>
-           
-           <img src="img/dev-jane-02.jpg" alt="Jane leaning against a bus" class="about-me_img">
-        </section>
-        
-        <!-- My Work -->
-        <section class="my-work" id="work">
-            <h2 class="section_title section_title-work">My work</h2>
-            <p class="section_subtitle section_subtitle-work">A selection of my range of work</p>
-            <div class="portfolio">
-                <!-- Portfolio item 01 -->
-                <a href="https://github.com/krugerjoshua/Chrome_Extension" class="portfolio_item">
-                    <img src="img/portfolio-01.jpg" alt="" class="portfolio_img">
-                    <div class="overlay">
-                        <span class="text">A simple chrome extension that lets you save a website links for later use.
-                        </span>
-                    </div>
-                </a>
-                
-                <!-- Portfolio item 02 -->
-                <a href="https://github.com/krugerjoshua/JOSKRU562_PTO2403_GroupA_JoshuaKruger_SDF05" class="portfolio_item">
-                    <img src="img/portfolio-02.jpg" alt="" class="portfolio_img">
-                    <div class="overlay">
-                        <span class="text">My first game that I created using HTML, CSS and JavaScript. Called blackjack.
-                        </span>
-                    </div>
-                </a>
-                
-                <!-- Portfolio item 03 -->
-                <a href="https://github.com/krugerjoshua/Module_6_JOSKRU562_PTO2403_GroupA_JoshuaKruger_SDF06" class="portfolio_item">
-                    <img src="img/portfolio-03.jpg" alt="" class="portfolio_img">
-                    <div class="overlay">
-                        <span class="text">A simple app to make a shopping list that stores the data in Firebase.
-                        </span>
-                    </div>
-                </a>
-                
-                <!-- Portfolio item 04 -->
-                <a href="https://github.com/krugerjoshua/Module_7_JOSKRU562_PTO2403_GroupA_JoshuaKruger_SDF07" class="portfolio_item">
-                    <img src="img/portfolio-04.jpg" alt="" class="portfolio_img">
-                    <div class="overlay">
-                        <span class="text">A website that is like an instagram profile but for pets.
-                        </span>
-                    </div>
-                </a>
-
-                <!-- Portfolio item 05 -->
-                <a href="https://github.com/krugerjoshua/SDF_Portfolio_Piece_JOSKRU562_PTO2403_GroupA_JoshuaKruger_SDF11" class="portfolio_item">
-                    <img src="img/portfolio-05.jpg" alt="" class="portfolio_img">
-                    <div class="overlay">
-                        <span class="text">A website showcasing a Bank for software developers that was made with the use of Tailwind CSS.
-                        </span>
-                    </div>
-                </a>
-
-                <!-- Portfolio item 06 -->
-                <a href="https://github.com/krugerjoshua/Module_5_JOSKRU562_PTO2403_GroupA_JoshuaKruger_JSL05" class="portfolio_item">
-                    <img src="img/portfolio-06.jpg" alt="" class="portfolio_img">
-                    <div class="overlay">
-                        <span class="text">A small project where the focus was on JavaScript arrays and objects.
-                        </span>
-                    </div>
-                </a>
-
-                <!-- Portfolio item 07 -->
-                <a href="https://github.com/krugerjoshua/Module_6_JOSKRU562_PTO2403_GroupA_JoshuaKruger_JSL06" class="portfolio_item">
-                    <img src="img/portfolio-07.jpg" alt="" class="portfolio_img">
-                    <div class="overlay">
-                        <span class="text">A restuarant website that focused on JavaScript concepts, including closures and event handlers.
-                        </span>
-                    </div>
-                </a>
-
-                <!-- Portfolio item 08 -->
-                <a href="https://github.com/krugerjoshua/Module_09_JOSKRU562_PTO2403_GroupA_JoshuaKruger_JSL09" class="portfolio_item">
-                    <img src="img/portfolio-08.jpg" alt="" class="portfolio_img">
-                    <div class="overlay">
-                        <span class="text">A interactive web-based project focusing on creating a Chrome Dashboard extension.
-                        </span>
-                    </div>
-                </a>
-            </div>
-            <div>
-                <!-- Portfolio item 09 -->
-                <a href="https://github.com/krugerjoshua/Module_09_JOSKRU562_PTO2403_GroupA_JoshuaKruger_JSL09" class="portfolio_item">
-                    <img src="img/portfolio-09.jpg" alt="" class="portfolio_img">
-                    <div class="overlay">
-                        <span class="text">Todo List app that was created by reading through user stories and added the requested features just as a junior developer would be tasked with in real life.
-                        </span>
-                    </div>
-                </a>
-            </div>
-                
-            
-        </section>
-        
-        
-        <!-- Footer -->
-        <footer class="footer">
-            <!-- replace with your own email address -->
-            <a href="mailto:joshuakruger66@live.com" class="footer_link">Send me an Email</a>
-            <ul class="social-list">
-                <li class="social-list_item">
-                    <a class="social-list_link" href="https://github.com/krugerjoshua">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </li>
-            </ul>
-        </footer>
-        
-        
-        <script src="index.js"></script>
-        
+    <body
+        class="bg-neutral-950 text-neutral-100 antialiased selection:bg-neutral-800 selection:text-white"
+    >
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
     </body>
 </html>
