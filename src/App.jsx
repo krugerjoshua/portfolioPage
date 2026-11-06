@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import HeroAbout from "./components/HeroAbout";
 import Journey from "./components/Journey";
+import Education from "./components/Education";
 import Projects from "./components/Projects";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
@@ -23,6 +24,7 @@ export default function App() {
             <main className="flex flex-col">
                 <HeroAbout />
                 <Journey />
+                <Education />
                 <Projects />
                 <FAQ />
             </main>
