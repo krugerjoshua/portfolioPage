@@ -1,46 +1,5 @@
 import React from "react";
-import {
-    SiHtml5,
-    SiCss,
-    SiJavascript,
-    SiPython,
-    SiTailwindcss,
-    SiReact,
-    SiFigma,
-} from "react-icons/si";
-import { VscVscode } from "react-icons/vsc";
-import {
-    FaLanguage,
-    FaComments,
-    FaCalculator,
-    FaGlobeAfrica,
-    FaCode,
-    FaDraftingCompass,
-} from "react-icons/fa";
-
-// ─── High School Subjects (Figma node #90:402 pills) ─────────────────────────
-
-const highSchoolSubjects = [
-    { icon: FaLanguage, label: "English First Additional Language" },
-    { icon: FaComments, label: "Afrikaans Home Language" },
-    { icon: FaCalculator, label: "Mathematics Literacy" },
-    { icon: FaGlobeAfrica, label: "Geography" },
-    { icon: FaCode, label: "Computer Applications Technology" },
-    { icon: FaDraftingCompass, label: "Engineering Graphics and Design" },
-];
-
-// ─── CodeSpace Tech Skills (Figma node #90:533 pills) ─────────────────────────
-
-const codespaceSkills = [
-    { icon: SiHtml5, label: "HTML" },
-    { icon: SiCss, label: "CSS" },
-    { icon: SiJavascript, label: "JavaScript" },
-    { icon: SiPython, label: "Python" },
-    { icon: SiTailwindcss, label: "TailwindCSS" },
-    { icon: SiReact, label: "React" },
-    { icon: VscVscode, label: "VS Code" },
-    { icon: SiFigma, label: "Figma" },
-];
+import { highSchoolSubjects, codespaceSkills } from "../data/educationData";
 
 export default function Education() {
     return (

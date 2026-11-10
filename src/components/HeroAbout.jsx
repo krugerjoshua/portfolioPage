@@ -1,52 +1,10 @@
 import { useEffect, useRef } from "react";
 import {
-    SiJavascript,
-    SiPython,
-    SiReact,
-    SiHtml5,
-    SiCss,
-    SiTailwindcss,
-} from "react-icons/si";
-import {
-    FaPhone,
-    FaEnvelope,
-    FaGithub,
-    FaLinkedin,
-    FaLightbulb,
-    FaHandshake,
-    FaRocket,
-    FaBook,
-    FaUserCircle,
-    FaPuzzlePiece,
-} from "react-icons/fa";
-
-// ─── Data ────────────────────────────────────────────────────────────────────
-
-const techBadgesRow1 = [
-    { icon: SiJavascript, label: "JavaScript", color: "text-[#F7DF1E]" },
-    { icon: SiPython,     label: "Python",     color: "text-white"     },
-    { icon: SiReact,      label: "React",      color: "text-[#61DAFB]" },
-];
-const techBadgesRow2 = [
-    { icon: SiHtml5,       label: "HTML",        color: "text-[#E34F26]" },
-    { icon: SiCss,         label: "CSS",         color: "text-[#1572B6]" },
-    { icon: SiTailwindcss, label: "TailwindCSS", color: "text-[#06B6D4]" },
-];
-const traits = [
-    { icon: FaLightbulb,   label: "Problem Solver"     },
-    { icon: FaHandshake,   label: "Team Player"        },
-    { icon: FaRocket,      label: "Adaptable"          },
-    { icon: FaBook,        label: "Continuous Learner" },
-    { icon: FaUserCircle,  label: "User Focused"       },
-    { icon: FaPuzzlePiece, label: "Detail-Oriented"    },
-];
-
-const contactLinks = [
-    { href: "tel:+27677879978",                                    icon: FaPhone,    label: "Call Joshua",           text: "067 787 9978"             },
-    { href: "mailto:joshuakruger66@live.com",                      icon: FaEnvelope, label: "Email Joshua",          text: "joshuakruger66@live.com"  },
-    { href: "https://github.com/krugerjoshua",                     icon: FaGithub,   label: "GitHub profile",        text: "github.com/krugerjoshua"  },
-    { href: "https://www.linkedin.com/in/joshua-kruger-0990a9244/",icon: FaLinkedin, label: "LinkedIn profile",      text: "LinkedIn Profile", underline: true },
-];
+    techBadgesRow1,
+    techBadgesRow2,
+    traits,
+    contactLinks,
+} from "../data/heroData";
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -77,16 +35,19 @@ export default function HeroAbout() {
     const aboutHeadingRef = useRef(null);
     const aboutContentRef = useRef(null);
 
-    // ── Scroll animation (desktop only) ──────────────────────────────────────
+    // ── Scroll animation (desktop only, rAF-throttled) ────────────────────────
     useEffect(() => {
-        const animate = () => {
+        let rafId = null;
+
+        const performAnimation = () => {
             // Skip animation on mobile — static layout handles it
             if (window.innerWidth < 768) return;
             if (!containerRef.current)   return;
 
             const rect       = containerRef.current.getBoundingClientRect();
             const scrollable = containerRef.current.offsetHeight - window.innerHeight;
-            const p          = clamp(-rect.top / scrollable);
+            if (scrollable <= 0) return;
+            const p = clamp(-rect.top / scrollable);
 
             // Cutout: scale down + lift upward + slight horizontal shift
             if (cutoutRef.current) {
@@ -98,16 +59,15 @@ export default function HeroAbout() {
             }
 
             // Large JOSHUA: fade out early
-            if (titleLargeRef.current)
+            if (titleLargeRef.current) {
                 titleLargeRef.current.style.opacity = `${mapRange(p, 0, 0.35, 1, 0)}`;
+            }
 
             // Left nav + badges + contact dock: fade out early
-            if (heroLeftNavRef.current)
-                heroLeftNavRef.current.style.opacity = `${mapRange(p, 0, 0.35, 1, 0)}`;
-            if (badgesRef.current)
-                badgesRef.current.style.opacity = `${mapRange(p, 0, 0.35, 1, 0)}`;
-            if (dockRef.current)
-                dockRef.current.style.opacity = `${mapRange(p, 0, 0.35, 1, 0)}`;
+            const heroControlsOpacity = `${mapRange(p, 0, 0.35, 1, 0)}`;
+            if (heroLeftNavRef.current) heroLeftNavRef.current.style.opacity = heroControlsOpacity;
+            if (badgesRef.current)      badgesRef.current.style.opacity      = heroControlsOpacity;
+            if (dockRef.current)        dockRef.current.style.opacity        = heroControlsOpacity;
 
             // "ABOUT ME" heading: fade in + slide up
             if (aboutHeadingRef.current) {
@@ -116,16 +76,27 @@ export default function HeroAbout() {
             }
 
             // Bio + traits: fade in last
-            if (aboutContentRef.current)
+            if (aboutContentRef.current) {
                 aboutContentRef.current.style.opacity = `${mapRange(p, 0.6, 0.9, 0, 1)}`;
+            }
         };
 
-        window.addEventListener("scroll", animate, { passive: true });
-        window.addEventListener("resize", animate, { passive: true });
-        animate();
+        const handleTick = () => {
+            if (rafId) return;
+            rafId = requestAnimationFrame(() => {
+                rafId = null;
+                performAnimation();
+            });
+        };
+
+        window.addEventListener("scroll", handleTick, { passive: true });
+        window.addEventListener("resize", handleTick, { passive: true });
+        performAnimation();
+
         return () => {
-            window.removeEventListener("scroll", animate);
-            window.removeEventListener("resize", animate);
+            if (rafId) cancelAnimationFrame(rafId);
+            window.removeEventListener("scroll", handleTick);
+            window.removeEventListener("resize", handleTick);
         };
     }, []);
 
