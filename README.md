@@ -78,11 +78,17 @@ portfolioPage/
 ├── index.html          # Vite entry HTML (fonts, root mount point)
 ├── package.json
 ├── portfolio.png       # Screenshot used in this README
+├── public/             # Static assets served from the site root (project preview images)
 └── src/
     ├── main.jsx        # React entry point
     ├── App.jsx         # Page composition
     ├── index.css       # Global styles and Tailwind import
-    ├── data/           # Content for education, projects, etc.
+    ├── data/           # Site content, one file per section
+    │   ├── heroData.js
+    │   ├── educationData.js
+    │   ├── journeyData.js
+    │   ├── projectsData.js
+    │   └── faqData.js
     └── components/
         ├── Navbar.jsx
         ├── HeroAbout.jsx
