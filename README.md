@@ -17,6 +17,7 @@ A single-page developer portfolio showcasing my projects, skills and contact det
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
+- [Project Structure](#project-structure)
 - [Available Scripts](#available-scripts)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
@@ -28,18 +29,20 @@ This site is my personal developer portfolio. It was originally built as the CDV
 
 ## Features
 
-- Single-page layout with smooth-scroll navigation between sections
+- Single-page layout with smooth-scroll navigation and a hero-to-about scroll transition
+- Dedicated sections for hero/about, education, journey, projects and FAQ, plus a footer
 - Dark theme with high-contrast text
 - Custom typography using Montserrat for body text and Knewave for accents (via Google Fonts)
-- Responsive layout intended to work across phone, tablet and desktop screens
+- Portfolio content (education, projects) kept in a separate `src/data` folder, separate from the components
 
 ## Tech Stack
 
 | Area | Technology |
 | --- | --- |
-| UI library | React |
-| Build tool / dev server | Vite |
-| Styling | Tailwind CSS |
+| UI library | React 19 |
+| Build tool / dev server | Vite 8 |
+| Styling | Tailwind CSS 4 (via `@tailwindcss/vite`) |
+| Icons | React Icons |
 | Fonts | Google Fonts (Montserrat, Knewave) |
 | Hosting | Netlify |
 
@@ -66,6 +69,28 @@ npm run dev
 ```
 
 Vite prints a local URL in the terminal (usually `http://localhost:5173`). Open it in your browser.
+
+## Project Structure
+ 
+```text
+portfolioPage/
+├── index.html          # Vite entry HTML (fonts, root mount point)
+├── package.json
+├── portfolio.png       # Screenshot used in this README
+└── src/
+    ├── main.jsx        # React entry point
+    ├── App.jsx         # Page composition
+    ├── index.css       # Global styles and Tailwind import
+    ├── data/           # Content for education, projects, etc.
+    └── components/
+        ├── Navbar.jsx
+        ├── HeroAbout.jsx
+        ├── Education.jsx
+        ├── Journey.jsx
+        ├── Projects.jsx
+        ├── FAQ.jsx
+        └── Footer.jsx
+```
 
 ## Available Scripts
 
