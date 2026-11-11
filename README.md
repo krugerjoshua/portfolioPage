@@ -18,6 +18,7 @@ A single-page developer portfolio showcasing my projects, skills and contact det
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
+- [Updating Content](#updating-content)
 - [Available Scripts](#available-scripts)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
@@ -91,6 +92,43 @@ portfolioPage/
         ├── FAQ.jsx
         └── Footer.jsx
 ```
+
+## Updating Content
+ 
+Content lives in `src/data/`, separate from the components, so you can change text, images and links without touching any JSX. The Projects section renders one card per object in the `projects` array in `src/data/projectsData.js`.
+
+### Adding or editing a project
+ 
+Add or edit an object in the array:
+ 
+```js
+{
+    id: 5,
+    number: "5.",
+    title: "Project Name",
+    description: "One or two sentences on what it does and how it was built.",
+    tags: ["React", "JavaScript"],
+    image: "/project-5-preview.png",
+    imageAlt: "Short description of the screenshot",
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/your-username/your-repo",
+}
+```
+ 
+| Field | Purpose |
+| --- | --- |
+| `id` | Unique number, used as the React `key` |
+| `number` | Label shown before the title; update it by hand if you reorder projects |
+| `title`, `description` | Card heading and body text |
+| `tags` | Tech pills shown on the card (see below) |
+| `image`, `imageAlt` | Preview image and its alt text (alt falls back to `title`) |
+| `liveUrl`, `githubUrl` | Card links. Set a value to `"#"` to hide that link |
+ 
+Notes:
+ 
+- **Images:** `image` is a root-relative path, so place the file in `public/` (for example `public/project-5-preview.png` is referenced as `/project-5-preview.png`).
+- **Layout:** cards alternate left and right based on their position in the array, so reordering the array flips the layout.
+- **Tag icons:** a tag shows an icon only if its text exactly matches a key in `tagIconMap` at the top of `src/components/Projects.jsx` (for example `React`, `JavaScript`, `TailwindCSS`, `TypeScript`, `Node.js`, `HTML`, `CSS`, `Python`, `Elixir`, `Phoenix`). Other tags still render, just without an icon. To add one, import an icon from `react-icons/si` and add a matching entry to `tagIconMap`.
 
 ## Available Scripts
 
