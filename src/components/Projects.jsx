@@ -32,7 +32,7 @@ export default function Projects() {
     return (
         <section
             id="projects"
-            className="relative w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32 select-none"
+            className="relative w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-24 md:py-32 select-none overflow-x-clip"
         >
             {/* ── Section Header (Figma Node 109:619) ── */}
             <div className="flex flex-col items-center text-center mb-16 md:mb-24">

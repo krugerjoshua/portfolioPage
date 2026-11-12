@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 
 export default function App() {
     return (
-        <div className="min-h-screen text-neutral-100 selection:bg-neutral-800 selection:text-white">
+        <div className="min-h-screen text-neutral-100 selection:bg-neutral-800 selection:text-white overflow-x-clip">
             {/* Fixed page-level background — persists on scroll */}
             <img
                 src="/hero-bg.jpg"
@@ -21,7 +21,7 @@ export default function App() {
             {/* Subtle darkening overlay */}
             <div className="fixed inset-0 bg-black/40 pointer-events-none -z-10" />
             <Navbar />
-            <main className="flex flex-col">
+            <main className="flex flex-col overflow-x-clip">
                 <HeroAbout />
                 <Journey />
                 <Education />

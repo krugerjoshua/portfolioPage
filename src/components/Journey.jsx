@@ -5,15 +5,15 @@ export default function Journey() {
     return (
         <section
             id="journey"
-            className="relative w-full max-w-6xl mx-auto px-6 py-20 flex flex-col items-center select-none"
+            className="relative w-full max-w-6xl mx-auto px-6 py-20 flex flex-col items-center select-none overflow-x-clip"
         >
             {/* Title: MY JOURNEY */}
             <h2 className="font-marker text-white text-5xl md:text-6xl text-center uppercase tracking-normal mb-16 drop-shadow-lg">
                 MY JOURNEY
             </h2>
 
-            {/* Desktop / Tablet Timeline */}
-            <div className="relative w-full hidden md:block" style={{ minHeight: "440px" }}>
+            {/* Desktop Timeline (Large screens) */}
+            <div className="relative w-full hidden lg:block" style={{ minHeight: "440px" }}>
                 {/* SVG S-Curve Path connecting milestones */}
                 <div
                     className="absolute left-1/2 -translate-x-1/2 top-4 pointer-events-none"
@@ -29,7 +29,7 @@ export default function Journey() {
 
                 {/* Milestone 1: Top Right */}
                 <div
-                    className="absolute left-1/2 flex items-center gap-3"
+                    className="absolute left-1/2 flex items-center gap-3 max-w-xs xl:max-w-sm"
                     style={{ top: "0px", transform: "translateX(103px)" }}
                 >
                     <div className="w-[18px] h-[18px] rounded-full border-2 border-white bg-neutral-900 shrink-0" />
@@ -43,7 +43,7 @@ export default function Journey() {
 
                 {/* Milestone 2: Upper Left */}
                 <div
-                    className="absolute right-1/2 flex items-center gap-3"
+                    className="absolute right-1/2 flex items-center gap-3 max-w-xs xl:max-w-sm"
                     style={{ top: "45px", transform: "translateX(-103px)" }}
                 >
                     <div className="text-right font-sans text-sm leading-snug">
@@ -79,7 +79,7 @@ export default function Journey() {
 
                 {/* Milestone 4: Bottom Left */}
                 <div
-                    className="absolute right-1/2 flex items-start gap-3 max-w-lg"
+                    className="absolute right-1/2 flex items-start gap-3 max-w-md xl:max-w-lg"
                     style={{ top: "155px", transform: "translateX(-103px)" }}
                 >
                     <div className="text-right font-sans">
@@ -105,11 +105,11 @@ export default function Journey() {
                 </div>
             </div>
 
-            {/* Mobile Vertical Fallback */}
-            <div className="w-full flex flex-col gap-8 md:hidden relative pl-6 border-l border-white/20">
+            {/* Mobile / Tablet Vertical Fallback */}
+            <div className="w-full max-w-xl mx-auto flex flex-col gap-8 lg:hidden relative pl-6 border-l border-white/20">
                 {milestones.map((m, idx) => (
                     <div key={idx} className="relative flex flex-col gap-1">
-                        <div className="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 border-neutral-900" />
+                        <div className="absolute left-0 -translate-x-1/2 top-1.5 w-3.5 h-3.5 rounded-full bg-white border-2 border-neutral-900" />
                         <div className="text-sm font-sans">
                             <span className="font-semibold text-white">{m.title}</span>{" "}
                             <span className="italic text-neutral-300 text-xs block sm:inline">

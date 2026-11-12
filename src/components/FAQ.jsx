@@ -17,7 +17,7 @@ export default function FAQ() {
         >
             {/* ── Dark Wave Ribbon Background (Figma Node 110:839) ── */}
             <div
-                className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center overflow-hidden"
+                className="absolute inset-0 -z-10 pointer-events-none flex items-center justify-center overflow-hidden w-full max-w-full"
                 aria-hidden="true"
             >
                 <img

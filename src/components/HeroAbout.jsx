@@ -107,10 +107,10 @@ export default function HeroAbout() {
                 MOBILE LAYOUT  (< md / 768 px)
                 Static — no sticky scroll animation.
             ═══════════════════════════════════════════════════════════════ */}
-            <div className="md:hidden flex flex-col">
+            <div className="md:hidden flex flex-col w-full overflow-x-hidden">
 
                 {/* ── Mobile Hero ── */}
-                <section id="hero" className="relative h-screen w-full select-none">
+                <section id="hero" className="relative h-screen w-full select-none overflow-hidden">
 
                     {/* Top nav bar */}
                     <nav
@@ -138,11 +138,11 @@ export default function HeroAbout() {
 
                     {/* Cutout */}
                     <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-20 pointer-events-none
-                                    flex items-end justify-center h-[68vh]">
+                                    flex items-end justify-center h-[65vh] max-h-[85vw] w-auto max-w-full">
                         <img
                             src="/joshua-cutout.png"
                             alt="Joshua"
-                            className="h-full w-auto max-w-none object-contain object-bottom"
+                            className="h-full w-auto object-contain object-bottom"
                         />
                     </div>
 
@@ -194,12 +194,12 @@ export default function HeroAbout() {
                 DESKTOP LAYOUT  (≥ md / 768 px)
                 200 vh sticky scroll-scrubbed animation.
             ═══════════════════════════════════════════════════════════════ */}
-            <div ref={containerRef} className="hidden md:block" style={{ height: "200vh" }}>
+            <div ref={containerRef} className="hidden md:block w-full overflow-x-clip" style={{ height: "200vh" }}>
 
                 {/* Sticky viewport — stays pinned while user burns through 100vh */}
                 <div
                     id="hero"
-                    className="sticky top-0 h-screen relative w-full select-none"
+                    className="sticky top-0 h-screen relative w-full select-none overflow-x-clip"
                 >
                     {/* Scroll anchor for #about links */}
                     <div id="about" className="absolute" style={{ top: "100vh" }} />
@@ -207,10 +207,10 @@ export default function HeroAbout() {
                     {/* ── Large JOSHUA (hero state) ── */}
                     <div
                         ref={titleLargeRef}
-                        className="absolute top-[3%] lg:top-[2%] inset-x-0 flex justify-center z-10 pointer-events-none"
+                        className="absolute top-[3%] lg:top-[2%] inset-x-0 flex justify-center z-10 pointer-events-none overflow-hidden px-4"
                     >
-                        <h1 className="font-marker text-white text-[clamp(5rem,20vw,24rem)]
-                                       leading-[0.88] tracking-normal text-center uppercase drop-shadow-lg">
+                        <h1 className="font-marker text-white text-[clamp(4.5rem,14vw,20rem)]
+                                       leading-[0.88] tracking-normal text-center uppercase drop-shadow-lg max-w-full">
                             JOSHUA
                         </h1>
                     </div>
@@ -219,9 +219,10 @@ export default function HeroAbout() {
                     <div
                         ref={cutoutRef}
                         className="absolute bottom-0 left-1/2 z-20 pointer-events-none
-                                   flex items-end justify-center w-auto max-w-full"
+                                   flex items-end justify-center w-auto max-w-full overflow-hidden"
                         style={{
                             height: "82vh",
+                            maxHeight: "85vw",
                             transformOrigin: "bottom center",
                             transform: "translateX(-50%) scale(1)",
                         }}
@@ -229,18 +230,18 @@ export default function HeroAbout() {
                         <img
                             src="/joshua-cutout.png"
                             alt="Joshua"
-                            className="h-full w-auto max-w-none object-contain object-bottom"
+                            className="h-full w-auto object-contain object-bottom"
                         />
                     </div>
 
                     {/* ── "ABOUT ME" heading ── */}
                     <div
                         ref={aboutHeadingRef}
-                        className="absolute inset-x-0 z-30 flex justify-center pointer-events-none"
+                        className="absolute inset-x-0 z-30 flex justify-center pointer-events-none overflow-hidden px-4"
                         style={{ top: "58%", opacity: 0 }}
                     >
-                        <h2 className="font-marker text-white text-6xl sm:text-7xl md:text-8xl lg:text-9xl
-                                       tracking-normal uppercase drop-shadow-lg">
+                        <h2 className="font-marker text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl
+                                       tracking-normal uppercase drop-shadow-lg max-w-full">
                             ABOUT ME
                         </h2>
                     </div>
@@ -274,8 +275,8 @@ export default function HeroAbout() {
                     <nav
                         ref={heroLeftNavRef}
                         aria-label="Hero navigation"
-                        className="absolute left-6 lg:left-12 top-[44%] -translate-y-1/2 z-30
-                                   flex items-center gap-5 text-white font-sans font-medium text-xl lg:text-2xl tracking-wide"
+                        className="absolute left-4 lg:left-12 top-[44%] -translate-y-1/2 z-30
+                                   flex items-center gap-3 lg:gap-5 text-white font-sans font-medium text-lg lg:text-2xl tracking-wide"
                     >
                         <a href="#hero"     className="hover:opacity-75 transition-opacity">HOME</a>
                         <span className="inline-block h-6 w-[1.5px] bg-white/70" aria-hidden="true" />
@@ -289,7 +290,7 @@ export default function HeroAbout() {
                     {/* ── Tech-stack badges (hero state) ── */}
                     <div
                         ref={badgesRef}
-                        className="absolute right-6 lg:right-12 top-[44%] -translate-y-1/2 z-30 flex flex-col gap-2.5"
+                        className="absolute right-4 lg:right-12 top-[44%] -translate-y-1/2 z-30 flex flex-col gap-2 lg:gap-2.5"
                     >
                         <div className="flex items-center gap-2.5 justify-end">
                             {techBadgesRow1.map(({ icon: Icon, label, color }) => (
