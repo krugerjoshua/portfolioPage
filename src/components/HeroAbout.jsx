@@ -40,9 +40,9 @@ export default function HeroAbout() {
         let rafId = null;
 
         const performAnimation = () => {
-            // Skip animation on mobile — static layout handles it
-            if (window.innerWidth < 768) return;
-            if (!containerRef.current)   return;
+            // Skip animation on portrait or small screens — static layout handles it
+            if (window.innerWidth < 1024 || window.innerHeight > window.innerWidth) return;
+            if (!containerRef.current || containerRef.current.offsetParent === null) return;
 
             const rect       = containerRef.current.getBoundingClientRect();
             const scrollable = containerRef.current.offsetHeight - window.innerHeight;
@@ -104,83 +104,102 @@ export default function HeroAbout() {
     return (
         <>
             {/* ═══════════════════════════════════════════════════════════════
-                MOBILE LAYOUT  (< md / 768 px)
-                Static — no sticky scroll animation.
+                STATIC LAYOUT (Mobile & All Portrait Displays)
+                Standard document flow — no scroll animation cavern or overlap.
             ═══════════════════════════════════════════════════════════════ */}
-            <div className="md:hidden flex flex-col w-full overflow-x-hidden">
+            <div className="lg:landscape:hidden flex flex-col w-full overflow-x-hidden">
 
-                {/* ── Mobile Hero ── */}
-                <section id="hero" className="relative h-screen w-full select-none overflow-hidden">
+                {/* ── Static Hero ── */}
+                <section id="hero" className="relative h-screen min-h-[600px] w-full select-none overflow-hidden flex flex-col justify-between">
 
                     {/* Top nav bar */}
                     <nav
-                        aria-label="Mobile navigation"
-                        className="absolute top-0 inset-x-0 z-30 flex items-center justify-center gap-3
-                                   text-white font-sans font-medium text-xs tracking-wide
-                                   bg-black/40 backdrop-blur-md py-3 px-4"
+                        aria-label="Portrait navigation"
+                        className="relative z-30 flex items-center justify-center gap-3 sm:gap-5
+                                   text-white font-sans font-medium text-xs sm:text-sm tracking-wide
+                                   bg-black/40 backdrop-blur-md py-3.5 px-6"
                     >
-                        <a href="#hero"     className="hover:opacity-75">HOME</a>
+                        <a href="#hero"     className="hover:opacity-75 transition-opacity">HOME</a>
                         <span className="h-3 w-px bg-white/50" />
-                        <a href="#about"    className="hover:opacity-75">ABOUT ME</a>
+                        <a href="#about"    className="hover:opacity-75 transition-opacity">ABOUT ME</a>
                         <span className="h-3 w-px bg-white/50" />
-                        <a href="#projects" className="hover:opacity-75">PROJECTS</a>
+                        <a href="#projects" className="hover:opacity-75 transition-opacity">PROJECTS</a>
                         <span className="h-3 w-px bg-white/50" />
-                        <a href="#faq"      className="hover:opacity-75">FAQ</a>
+                        <a href="#faq"      className="hover:opacity-75 transition-opacity">FAQ</a>
                     </nav>
 
                     {/* JOSHUA title */}
-                    <div className="absolute top-[8%] inset-x-0 flex justify-center z-10 pointer-events-none">
-                        <h1 className="font-marker text-white text-[clamp(4rem,22vw,7rem)] leading-[0.88]
+                    <div className="absolute top-[8%] sm:top-[6%] inset-x-0 flex justify-center z-10 pointer-events-none">
+                        <h1 className="font-marker text-white text-[clamp(4.5rem,18vw,8.5rem)] leading-[0.88]
                                        text-center uppercase drop-shadow-lg">
                             JOSHUA
                         </h1>
                     </div>
 
                     {/* Cutout */}
-                    <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-20 pointer-events-none
-                                    flex items-end justify-center h-[65vh] max-h-[85vw] w-auto max-w-full">
+                    <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 z-20 pointer-events-none
+                                    flex items-end justify-center h-[65vh] sm:h-[70vh] w-auto">
                         <img
                             src="/joshua-cutout.png"
                             alt="Joshua"
-                            className="h-full w-auto object-contain object-bottom"
+                            className="h-full w-auto max-w-none object-contain object-bottom"
                         />
                     </div>
 
-                    {/* Contact dock — icon-only buttons on mobile */}
-                    <address className="absolute bottom-4 inset-x-0 z-30 flex items-center justify-center gap-4 not-italic">
-                        {contactLinks.map(({ href, icon: Icon, label }) => (
+                    {/* Contact dock */}
+                    <address className="relative bottom-4 sm:bottom-6 z-30 flex flex-wrap items-center justify-center gap-2 sm:gap-3 px-4 not-italic">
+                        {contactLinks.map(({ href, icon: Icon, label, text }) => (
                             <a
                                 key={label}
                                 href={href}
                                 target={href.startsWith("http") ? "_blank" : undefined}
                                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                                className={iconBtn}
+                                className={`${pill} hover:bg-white/[0.12] hover:-translate-y-0.5 transition-all text-xs sm:text-sm`}
                                 aria-label={label}
                             >
-                                <Icon className="text-sm" aria-hidden="true" />
+                                <Icon className="text-xs sm:text-sm shrink-0" aria-hidden="true" />
+                                <span className="hidden sm:inline">{text}</span>
                             </a>
                         ))}
                     </address>
                 </section>
 
-                {/* ── Mobile About ── */}
+                {/* ── Static About ── */}
                 <section
                     id="about"
-                    className="relative w-full px-6 py-20 flex flex-col items-center text-center gap-6 select-none"
+                    className="relative w-full px-6 py-20 sm:py-28 flex flex-col items-center text-center gap-8 select-none"
                 >
-                    <h2 className="font-marker text-white text-5xl uppercase drop-shadow-lg leading-none">
+                    <h2 className="font-marker text-white text-5xl sm:text-6xl md:text-7xl uppercase drop-shadow-lg leading-none">
                         ABOUT ME
                     </h2>
-                    <p className="font-sans font-medium text-neutral-200 text-base leading-relaxed max-w-sm">
+                    <p className="font-sans font-medium text-neutral-200 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl">
                         Software developer with a passion for solving problems, building useful
                         applications, and continuously learning. I enjoy creating software
                         that&apos;s not only functional but thoughtfully built.
                     </p>
-                    <div className="flex flex-wrap items-center justify-center gap-2.5">
+
+                    {/* Tech-stack badges */}
+                    <div className="flex flex-wrap items-center justify-center gap-2.5 max-w-2xl">
+                        {techBadgesRow1.map(({ icon: Icon, label, color }) => (
+                            <div key={label} className={`${pill} border border-white/20 cursor-default text-xs sm:text-sm`}>
+                                <Icon className={`text-sm shrink-0 ${color}`} aria-hidden="true" />
+                                <span>{label}</span>
+                            </div>
+                        ))}
+                        {techBadgesRow2.map(({ icon: Icon, label, color }) => (
+                            <div key={label} className={`${pill} border border-white/20 cursor-default text-xs sm:text-sm`}>
+                                <Icon className={`text-sm shrink-0 ${color}`} aria-hidden="true" />
+                                <span>{label}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Trait pills */}
+                    <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-2xl">
                         {traits.map(({ icon: Icon, label }) => (
                             <div
                                 key={label}
-                                className={`${pill} cursor-default`}
+                                className={`${pill} hover:bg-white/[0.12] transition-colors cursor-default text-xs sm:text-sm`}
                             >
                                 <Icon className="text-sm shrink-0 opacity-90" aria-hidden="true" />
                                 <span>{label}</span>
@@ -191,10 +210,10 @@ export default function HeroAbout() {
             </div>
 
             {/* ═══════════════════════════════════════════════════════════════
-                DESKTOP LAYOUT  (≥ md / 768 px)
+                WIDESCREEN LANDSCAPE DESKTOP (≥ lg & landscape)
                 200 vh sticky scroll-scrubbed animation.
             ═══════════════════════════════════════════════════════════════ */}
-            <div ref={containerRef} className="hidden md:block w-full overflow-x-clip" style={{ height: "200vh" }}>
+            <div ref={containerRef} className="hidden lg:landscape:block w-full" style={{ height: "200vh" }}>
 
                 {/* Sticky viewport — stays pinned while user burns through 100vh */}
                 <div
@@ -207,10 +226,10 @@ export default function HeroAbout() {
                     {/* ── Large JOSHUA (hero state) ── */}
                     <div
                         ref={titleLargeRef}
-                        className="absolute top-[3%] lg:top-[2%] inset-x-0 flex justify-center z-10 pointer-events-none overflow-hidden px-4"
+                        className="absolute top-[3%] lg:top-[2%] inset-x-0 flex justify-center z-10 pointer-events-none"
                     >
-                        <h1 className="font-marker text-white text-[clamp(4.5rem,14vw,20rem)]
-                                       leading-[0.88] tracking-normal text-center uppercase drop-shadow-lg max-w-full">
+                        <h1 className="font-marker text-white text-[clamp(5rem,19vw,22rem)]
+                                       leading-[0.88] tracking-normal text-center uppercase drop-shadow-lg">
                             JOSHUA
                         </h1>
                     </div>
@@ -219,10 +238,9 @@ export default function HeroAbout() {
                     <div
                         ref={cutoutRef}
                         className="absolute bottom-0 left-1/2 z-20 pointer-events-none
-                                   flex items-end justify-center w-auto max-w-full overflow-hidden"
+                                   flex items-end justify-center w-auto"
                         style={{
                             height: "82vh",
-                            maxHeight: "85vw",
                             transformOrigin: "bottom center",
                             transform: "translateX(-50%) scale(1)",
                         }}
@@ -230,18 +248,18 @@ export default function HeroAbout() {
                         <img
                             src="/joshua-cutout.png"
                             alt="Joshua"
-                            className="h-full w-auto object-contain object-bottom"
+                            className="h-full w-auto max-w-none object-contain object-bottom"
                         />
                     </div>
 
                     {/* ── "ABOUT ME" heading ── */}
                     <div
                         ref={aboutHeadingRef}
-                        className="absolute inset-x-0 z-30 flex justify-center pointer-events-none overflow-hidden px-4"
+                        className="absolute inset-x-0 z-30 flex justify-center pointer-events-none"
                         style={{ top: "58%", opacity: 0 }}
                     >
-                        <h2 className="font-marker text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-                                       tracking-normal uppercase drop-shadow-lg max-w-full">
+                        <h2 className="font-marker text-white text-6xl sm:text-7xl md:text-8xl lg:text-9xl
+                                       tracking-normal uppercase drop-shadow-lg">
                             ABOUT ME
                         </h2>
                     </div>
