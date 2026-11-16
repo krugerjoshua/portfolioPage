@@ -185,7 +185,7 @@ export default function HeroAbout() {
                     {/* JOSHUA title */}
                     <div className="absolute top-[10%] sm:top-[6%] inset-x-0 flex justify-center z-10 pointer-events-none">
                         <h1
-                            className="font-marker text-white text-[clamp(5.25rem,min(27.1vw,42vh),42rem)]
+                            className="font-marker text-white text-[clamp(5.25rem,min(22vw,36vh),42rem)]
                leading-[0.88] tracking-normal text-center uppercase drop-shadow-lg"
                         >
                             JOSHUA
