@@ -334,7 +334,7 @@ export default function HeroAbout() {
                             className="font-marker text-white tracking-normal text-center uppercase drop-shadow-lg leading-none"
                             style={{
                                 fontSize: "clamp(11rem, 30vw, 455px)",
-                                fontSize: "clamp(11rem, 22vw, 60rem)",
+                                fontSize: "clamp(11rem, 24vw, 60rem)",
                                 width: "100vw",
                             }}
                         >
