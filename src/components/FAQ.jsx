@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { traits } from "../data/heroData";
 import { faqs } from "../data/faqData";
 import { FaChevronDown } from "react-icons/fa";

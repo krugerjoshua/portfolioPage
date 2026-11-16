@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
     techBadgesRow1,
     techBadgesRow2,
@@ -19,12 +19,20 @@ const mapRange = (val, inLo, inHi, outLo, outHi) => {
 const pill =
     "flex items-center gap-2.5 bg-white/[0.06] backdrop-blur-[40px] text-white font-sans font-medium text-xs px-[15px] py-[10px] rounded-[10px] shadow-sm";
 
-const iconBtn =
-    "flex items-center justify-center w-10 h-10 rounded-full bg-white/[0.08] backdrop-blur-md text-white hover:bg-white/[0.18] transition-colors";
+const cutoutTopPx = 283;
+const foreheadTop = "calc(47.1% - 1rem)";
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function HeroAbout() {
+    // Layout state to toggle navigation anchor IDs cleanly without duplicates
+    const [isDesktopLandscape, setIsDesktopLandscape] = useState(() => {
+        if (typeof window === "undefined") return false;
+        return (
+            window.innerWidth >= 1024 && window.innerWidth > window.innerHeight
+        );
+    });
+
     // Desktop animation refs
     const containerRef = useRef(null);
     const cutoutRef = useRef(null);
@@ -62,8 +70,13 @@ export default function HeroAbout() {
             if (cutoutRef.current) {
                 const scale = mapRange(p, 0, 1, 1, 0.65);
                 const tx = mapRange(p, 0, 1, -50, -47);
-                const bottomPct = mapRange(p, 0, 1, 0, 29);
-                cutoutRef.current.style.bottom = `${bottomPct}%`;
+                const viewportH = window.innerHeight;
+                // height is 82vh, so top = 100vh - bottom - 82vh.
+                // Start at a bottom that puts the cutout top exactly 283px from the top.
+                const startBottom = viewportH * 0.18 - cutoutTopPx;
+                const endBottom = viewportH * 0.29;
+                const bottomPx = mapRange(p, 0, 1, startBottom, endBottom);
+                cutoutRef.current.style.bottom = `${bottomPx}px`;
                 cutoutRef.current.style.transform = `translateX(${tx}%) scale(${scale})`;
             }
 
@@ -101,14 +114,22 @@ export default function HeroAbout() {
             });
         };
 
+        const handleResize = () => {
+            setIsDesktopLandscape(
+                window.innerWidth >= 1024 &&
+                    window.innerWidth > window.innerHeight,
+            );
+            handleTick();
+        };
+
         window.addEventListener("scroll", handleTick, { passive: true });
-        window.addEventListener("resize", handleTick, { passive: true });
+        window.addEventListener("resize", handleResize, { passive: true });
         performAnimation();
 
         return () => {
             if (rafId) cancelAnimationFrame(rafId);
             window.removeEventListener("scroll", handleTick);
-            window.removeEventListener("resize", handleTick);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
 
@@ -122,7 +143,7 @@ export default function HeroAbout() {
             <div className="lg:landscape:hidden flex flex-col w-full overflow-x-hidden">
                 {/* ── Static Hero ── */}
                 <section
-                    id="hero"
+                    id={!isDesktopLandscape ? "hero" : undefined}
                     className="relative h-screen min-h-[600px] w-full select-none overflow-hidden flex flex-col justify-between"
                 >
                     {/* Top nav bar */}
@@ -162,9 +183,9 @@ export default function HeroAbout() {
                     </nav>
 
                     {/* JOSHUA title */}
-                    <div className="absolute top-[8%] sm:top-[6%] inset-x-0 flex justify-center z-10 pointer-events-none">
+                    <div className="absolute top-[10%] sm:top-[6%] inset-x-0 flex justify-center z-10 pointer-events-none">
                         <h1
-                            className="font-marker text-white text-[clamp(5rem,min(25.8vw,40vh),40rem)]
+                            className="font-marker text-white text-[clamp(5.25rem,min(27.1vw,42vh),42rem)]
                leading-[0.88] tracking-normal text-center uppercase drop-shadow-lg"
                         >
                             JOSHUA
@@ -218,7 +239,7 @@ export default function HeroAbout() {
 
                 {/* ── Static About ── */}
                 <section
-                    id="about"
+                    id={!isDesktopLandscape ? "about" : undefined}
                     className="relative w-full px-6 py-20 sm:py-28 flex flex-col items-center text-center gap-8 select-none"
                 >
                     <h2 className="font-marker text-white text-5xl sm:text-6xl md:text-7xl uppercase drop-shadow-lg leading-none">
@@ -283,29 +304,39 @@ export default function HeroAbout() {
             ═══════════════════════════════════════════════════════════════ */}
             <div
                 ref={containerRef}
-                className="hidden lg:landscape:block w-full"
+                className="hidden lg:landscape:block w-full relative"
                 style={{ height: "200vh" }}
             >
+                {/* Scroll anchor for #hero */}
+                <div
+                    id={isDesktopLandscape ? "hero" : undefined}
+                    className="absolute top-0 pointer-events-none"
+                />
+
+                {/* Scroll anchor for #about links (at 100vh = scroll scrub complete) */}
+                <div
+                    id={isDesktopLandscape ? "about" : undefined}
+                    className="absolute pointer-events-none"
+                    style={{ top: "100vh" }}
+                />
+
                 {/* Sticky viewport — stays pinned while user burns through 100vh */}
                 <div
-                    id="hero"
                     className="sticky top-0 h-screen relative w-full select-none overflow-x-clip"
                 >
-                    {/* Scroll anchor for #about links */}
-                    <div
-                        id="about"
-                        className="absolute"
-                        style={{ top: "100vh" }}
-                    />
 
-                    {/* ── Large JOSHUA (hero state) ── */}
+                    {/* ── Large JOSHUA (Extended to top with minimal gap; bottom baseline preserved) ── */}
                     <div
                         ref={titleLargeRef}
-                        className="absolute top-[3%] lg:top-[2%] inset-x-0 flex justify-center z-10 pointer-events-none"
+                        className="absolute top-[-35px] inset-x-0 flex justify-center z-10 pointer-events-none"
                     >
                         <h1
-                            className="font-marker text-white text-[clamp(5rem,19vw,22rem)]
-                                       leading-[0.88] tracking-normal text-center uppercase drop-shadow-lg"
+                            className="font-marker text-white tracking-normal text-center uppercase drop-shadow-lg leading-none"
+                            style={{
+                                fontSize: "clamp(11rem, 30vw, 455px)",
+                                width: "1630px",
+                                maxWidth: "100vw",
+                            }}
                         >
                             JOSHUA
                         </h1>
@@ -318,6 +349,7 @@ export default function HeroAbout() {
                                    flex items-end justify-center w-auto"
                         style={{
                             height: "82vh",
+                            bottom: "calc(18vh - 283px)",
                             transformOrigin: "bottom center",
                             transform: "translateX(-50%) scale(1)",
                         }}
@@ -379,8 +411,11 @@ export default function HeroAbout() {
                     <nav
                         ref={heroLeftNavRef}
                         aria-label="Hero navigation"
-                        className="absolute left-4 lg:left-12 top-[44%] -translate-y-1/2 z-30
+                        className="absolute left-4 lg:left-12 z-30
                                    flex items-center gap-3 lg:gap-5 text-white font-sans font-medium text-lg lg:text-2xl tracking-wide"
+                        style={{
+                            top: foreheadTop,
+                        }}
                     >
                         <a
                             href="#hero"
@@ -423,7 +458,10 @@ export default function HeroAbout() {
                     {/* ── Tech-stack badges (hero state) ── */}
                     <div
                         ref={badgesRef}
-                        className="absolute right-4 lg:right-12 top-[44%] -translate-y-1/2 z-30 flex flex-col gap-2 lg:gap-2.5"
+                        className="absolute right-4 lg:right-12 z-30 flex flex-col gap-2 lg:gap-2.5"
+                        style={{
+                            top: foreheadTop,
+                        }}
                     >
                         <div className="flex items-center gap-2.5 justify-end">
                             {techBadgesRow1.map(

@@ -1,4 +1,3 @@
-import React from "react";
 import { contactLinks } from "../data/heroData";
 
 export default function Footer() {

@@ -1,4 +1,3 @@
-import React from "react";
 import { highSchoolSubjects, codespaceSkills } from "../data/educationData";
 
 export default function Education() {

@@ -19,18 +19,27 @@ export const milestones = [
         side: "right", // Milestone 3 (Middle right)
         title: "Sales Agent",
         subtitle: "Telkom (Feathercom)",
-        period: "Aug 2021 - Present",
+        period: "Aug 2021 - 2024",
         description:
-            "Recreated multiple websites using Zoho, including minor front-end adjustments and structured content layouts. Designed custom visual elements and icons for web use. Developed a logo concept and client presentation for a prospective brand.",
+            "Drive front-line retail sales, resolve customer problems and consistently meet performance targets in a fast-paced environment. Built strong communication, teamwork and attention-to-detail skills directly transferable to client-facing development work.",
         topOffset: "100px",
     },
     {
-        side: "left", // Milestone 4 (Bottom left)
+        side: "left", // Milestone 4 (Middle left)
+        title: "Assistant Manager",
+        subtitle: "Telkom (Feathercom)",
+        period: "2024 - Present",
+        description:
+            "Promoted from Sales Agent to Assistant Manager. Responsible for overseeing daily store operations, managing staff rosters and scheduling, resolving customer queries, and driving team sales performance while upholding customer service standards.",
+        topOffset: "165px",
+    },
+    {
+        side: "right", // Milestone 5 (Bottom right)
         title: "Software Development",
         subtitle: "Freelance",
         period: "Jan 2025 - Present",
         description:
             "Worked independently on software development projects, turning ideas and requirements into functional digital solutions. Developed and maintained applications while troubleshooting technical issues, improving functionality, and continuously learning new technologies and development practices. Worked directly with clients to understand their needs, communicate progress, and deliver solutions that are practical, reliable, and user-friendly. Managing projects independently has strengthened my problem-solving, time management, communication, and ability to take ownership from initial idea through to completion.",
-        topOffset: "160px",
+        topOffset: "250px",
     },
 ];

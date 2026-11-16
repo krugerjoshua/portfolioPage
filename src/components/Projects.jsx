@@ -1,4 +1,3 @@
-import React from "react";
 import { projects } from "../data/projectsData";
 import {
     SiReact,
@@ -50,13 +49,13 @@ export default function Projects() {
             <div className="flex flex-col gap-20 md:gap-28 lg:gap-36">
                 {projects.map((project, index) => {
                     // Alternating layout: odd indexes reverse order on desktop
-                    const isEven = index % 2 === 1;
+                    const isReversed = index % 2 === 1;
 
                     return (
                         <article
                             key={project.id}
                             className={`flex flex-col gap-8 md:gap-12 lg:gap-16 items-center ${
-                                isEven ? "lg:flex-row-reverse" : "lg:flex-row"
+                                isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
                             }`}
                         >
                             {/* ── Project Content / Description ── */}
