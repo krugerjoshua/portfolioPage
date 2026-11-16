@@ -328,14 +328,14 @@ export default function HeroAbout() {
                     {/* ── Large JOSHUA (Extended to top with minimal gap; bottom baseline preserved) ── */}
                     <div
                         ref={titleLargeRef}
-                        className="absolute top-[-35px] inset-x-0 flex justify-center z-10 pointer-events-none"
+                        className="absolute top-[-1.6vw] inset-x-0 flex justify-center z-10 pointer-events-none"
                     >
                         <h1
                             className="font-marker text-white tracking-normal text-center uppercase drop-shadow-lg leading-none"
                             style={{
                                 fontSize: "clamp(11rem, 30vw, 455px)",
-                                width: "1630px",
-                                maxWidth: "100vw",
+                                fontSize: "clamp(11rem, 21.3vw, 60rem)",
+                                width: "100vw",
                             }}
                         >
                             JOSHUA
