@@ -4,7 +4,7 @@ export const projects = [
         number: "1.",
         title: "Trello Clone",
         description:
-            "Full-stack Kanban productivity application featuring fluid drag-and-drop board workflow, token-based authentication, and state synchronization. Built with a high-concurrency Elixir/Phoenix backend and React/Redux frontend, containerized via Docker and deployed on Render.",
+            "Full-stack Kanban productivity application featuring fluid drag-and-drop board workflow, token-based authentication, and state synchronization. Built with a high-concurrency Elixir/Phoenix backend and React/Redux frontend, containerized via Docker and deployed on Render.(Important: Do not use real emails or passwords for sign up as this is a demo site.)",
         tags: ["React", "Elixir", "Phoenix", "JavaScript"],
         image: "/project-1-preview.png",
         imageAlt: "Trello Clone board desktop preview",
@@ -20,7 +20,7 @@ export const projects = [
         tags: ["React", "Node.js", "JavaScript", "TailwindCSS"],
         image: "/project-2-preview.png",
         imageAlt: "VineDoctor mobile preview",
-        liveUrl: "#",
+        liveUrl: "https://vinedoctor.netlify.app/",
         githubUrl: "https://github.com/krugerjoshua/vinedoctor",
     },
     {
@@ -32,7 +32,7 @@ export const projects = [
         tags: ["React", "TypeScript", "TailwindCSS"],
         image: "/project-3-preview.png",
         imageAlt: "Podcast App website preview",
-        liveUrl: "#",
+        liveUrl: "https://joshuaspodcastapp.netlify.app/",
         githubUrl: "https://github.com/krugerjoshua/Podcast_App_Project",
     },
 ];
