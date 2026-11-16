@@ -56,7 +56,7 @@ export default function Journey() {
                                         </span>
                                     </div>
                                     {m.description && (
-                                        <p className="mt-2 text-xs text-neutral-300 leading-relaxed font-light">
+                                        <p className="mt-2 text-sm text-neutral-300 leading-relaxed font-light">
                                             {m.description}
                                         </p>
                                     )}
@@ -84,7 +84,7 @@ export default function Journey() {
                                         </span>
                                     </div>
                                     {m.description && (
-                                        <p className="mt-2 text-xs text-neutral-300 leading-relaxed font-light">
+                                        <p className="mt-2 text-sm text-neutral-300 leading-relaxed font-light">
                                             {m.description}
                                         </p>
                                     )}
@@ -115,7 +115,7 @@ export default function Journey() {
                                 </span>
                             </div>
                             {m.description && (
-                                <p className="text-xs text-neutral-300 leading-relaxed font-light mt-1.5">
+                                <p className="text-sm text-neutral-300 leading-relaxed font-light mt-1.5">
                                     {m.description}
                                 </p>
                             )}

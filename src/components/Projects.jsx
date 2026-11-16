@@ -64,7 +64,7 @@ export default function Projects() {
                                     {project.number} {project.title}
                                 </h3>
 
-                                <p className="font-sans font-normal text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed">
+                                <p className="font-sans font-normal text-neutral-300 text-sm sm:text-base leading-relaxed">
                                     {project.description}
                                 </p>
 

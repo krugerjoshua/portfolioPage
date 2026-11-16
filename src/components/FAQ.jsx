@@ -77,7 +77,7 @@ export default function FAQ() {
                                     />
                                 </button>
                                 {isOpen && (
-                                    <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-neutral-300 leading-relaxed font-sans border-t border-white/5">
+                                    <div className="px-5 pb-5 pt-1 text-sm text-neutral-300 leading-relaxed font-sans border-t border-white/5">
                                         <p>{faq.answer}</p>
                                     </div>
                                 )}

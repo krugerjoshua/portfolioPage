@@ -59,7 +59,7 @@ export default function Education() {
                         </span>
                     </div>
 
-                    <p className="font-sans font-normal text-neutral-300 text-xs sm:text-sm leading-relaxed max-w-3xl mx-auto mb-8 text-center">
+                    <p className="font-sans font-normal text-neutral-300 text-sm leading-relaxed max-w-3xl mx-auto mb-8 text-center">
                         Completed a software development programme covering web development
                         fundamentals, JavaScript, and modern frontend development. Built a
                         foundation in HTML, CSS and JavaScript, while gaining experience with
