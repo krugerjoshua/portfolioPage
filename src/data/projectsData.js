@@ -32,7 +32,7 @@ export const projects = [
         tags: ["React", "TypeScript", "TailwindCSS"],
         image: "/project-3-preview.png",
         imageAlt: "Podcast App website preview",
-        liveUrl: "https://joshuaspodcastapp.netlify.app/",
-        githubUrl: "https://github.com/krugerjoshua/Podcast_App_Project",
+        liveUrl: "https://cuethepod.vercel.app/",
+        githubUrl: "https://github.com/krugerjoshua/podcast-app",
     },
 ];
